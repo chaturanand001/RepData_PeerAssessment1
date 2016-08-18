@@ -43,8 +43,8 @@ stepsByDay <- tapply(activityData$steps, activityData$date, sum, na.rm=TRUE)
 ```{r, echo=TRUE}
 library(scales)
 library(ggplot2)
-hist<- qplot(stepsByDay, xlab='Total steps per day', ylab='Frequency using binwith 500', binwidth=500)
-print(hist)
+library(knitr)
+qplot(stepsByDay, xlab='Total steps per day', ylab='Frequency using binwith 500', binwidth=500)
 ```
 
 2. Calculate and report the mean and median total number of steps taken per day

@@ -18,12 +18,16 @@ output: html_document
 
 
 ```{r,histogram1, echo=TRUE}
-setwd("D:/Education/Education/Data Science/JHU/Reproducible Reserach/Week2")
-if(!file.exists('activity.csv')){
-  unzip('activity.zip')
+url <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
+filename <- "activity.zip"
+unzippedFilename <- "activity.csv"
+if (!file.exists(filename)) {
+  download.file(url, destfile = filename)
 }
-activityData <- read.csv('activity.csv')
-head(activityData)
+if (!file.exists(unzippedFilename)) {
+  unzip(filename)
+}
+activityData <- read.csv(unzippedFilename)
 ```
 
 
@@ -39,8 +43,8 @@ stepsByDay <- tapply(activityData$steps, activityData$date, sum, na.rm=TRUE)
 ```{r, echo=TRUE}
 library(scales)
 library(ggplot2)
-qplot(stepsByDay, xlab='Total steps per day', ylab='Frequency using binwith 500', binwidth=500)
-
+hist<- qplot(stepsByDay, xlab='Total steps per day', ylab='Frequency using binwith 500', binwidth=500)
+print(hist)
 ```
 
 2. Calculate and report the mean and median total number of steps taken per day

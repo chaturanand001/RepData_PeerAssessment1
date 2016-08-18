@@ -76,6 +76,7 @@ ggplot(data=averageStepsPerTimeBlock, aes(x=interval, y=meanSteps)) +
   ylab("average number of steps taken") 
 
 ```
+![Time Series Plot](Time Series Plot.png)
 
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
@@ -116,6 +117,7 @@ stepsByDayImputed <- tapply(activityDataImputed$steps, activityDataImputed$date,
 qplot(stepsByDayImputed, xlab='Total steps per day (Imputed)', ylab='Frequency using binwith 500', binwidth=500)
 ```
 
+![plot of Total Steps per day imputed](Steps per day imputed.png)
 
 
 5. and Calculate and report the mean and median total number of steps taken per day. 
@@ -148,3 +150,4 @@ ggplot(averagedActivityDataImputed, aes(interval, steps)) +
   ylab("avarage number of steps")
 ```
 
+![plot of Weekday Weekend](weekdayweekend.png)

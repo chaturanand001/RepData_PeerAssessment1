@@ -15,7 +15,7 @@ output: html_document
 ## Loading and preprocessing the data
 
 
-```{r, echo=TRUE}
+```{r,histogram1, echo=TRUE}
 setwd("D:/Education/Education/Data Science/JHU/Reproducible Reserach/Week2")
 if(!file.exists('activity.csv')){
   unzip('activity.zip')
@@ -38,7 +38,7 @@ stepsByDay <- tapply(activityData$steps, activityData$date, sum, na.rm=TRUE)
 library(scales)
 library(ggplot2)
 qplot(stepsByDay, xlab='Total steps per day', ylab='Frequency using binwith 500', binwidth=500)
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png)
+
 ```
 
 2. Calculate and report the mean and median total number of steps taken per day
@@ -67,7 +67,6 @@ ggplot(data=averageStepsPerTimeBlock, aes(x=interval, y=meanSteps)) +
   xlab("5-minute interval") +
   ylab("average number of steps taken") 
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
 ```
 
 
@@ -107,7 +106,6 @@ activityDataImputed$steps <- impute(activityData$steps, fun=mean)
 ```{r, echo=TRUE}
 stepsByDayImputed <- tapply(activityDataImputed$steps, activityDataImputed$date, sum)
 qplot(stepsByDayImputed, xlab='Total steps per day (Imputed)', ylab='Frequency using binwith 500', binwidth=500)
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
 ```
 
 
@@ -140,6 +138,5 @@ ggplot(averagedActivityDataImputed, aes(interval, steps)) +
   facet_grid(dateType ~ .) +
   xlab("5-minute interval") + 
   ylab("avarage number of steps")
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 ```
 
